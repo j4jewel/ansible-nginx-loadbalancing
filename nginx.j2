@@ -1,0 +1,12 @@
+    upstream backend {
+        server {{ backendip1 }};
+        server {{ backendip2 }};
+    }
+
+    server {
+        listen 80;
+        server_name {{domain}} www.{{domain}};
+        location / {
+            proxy_pass http://backend;
+        }
+    }
